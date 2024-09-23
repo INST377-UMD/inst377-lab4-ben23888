@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment page</title>
+    <style>
+        .section {
+            border: 2px solid black;
+            padding: 20px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="page-heading">Welcome to the Page</h1>
+
+
+    <div class="section">
+        <h2>Alert Me Section</h2>
+        <form name="alertForm" onsubmit="return showAlert()">
+            <label for="name">Enter your name: </label>
+            <input type="text" id="name" placeholder="Name">
+            <br>
+            <input type="submit" value="Alert me">
+        </form>
+    </div>
+
+
+    <div class="section">
+        <h2>Change Color Section</h2>
+        <h3 id="color-text">This element will change colors</h3>
+        <button onclick="changeColor()">Change Color</button>
+    </div>
+
+
+    <div class="section">
+        <h2>Text testing section</h2>
+        <form name="textTesterForm" onsubmit="return validateText()">
+            <label for="text">Enter text: </label>
+            <input type="text" id="text" placeholder="Text">
+            <br>
+            <input type="submit" value="Validate text">
+        </form>
+    </div>
+
+
+    <div class="section">
+        <h2>Add text section</h2>
+        <button onclick="addText()">Add text</button>
+    </div>
+
+    <script type="text/javascript">
+
+        function showAlert() {
+            const name = document.getElementById('name').value;
+            if (!name) {
+                alert('Please enter a name');
+                return false;  
+            }
+            alert('Hi ' + name + '!');
+            return false;  
+        }
+
+
+        function changeColor() {
+            const textElement = document.getElementById('color-text');
+            if (textElement.style.color === 'green') {
+                textElement.style.color = 'blue';
+            } else {
+                textElement.style.color = 'green';
+            }
+        }
+
+
+        function validateText() {
+            const validationRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+            const textInput = document.getElementById('text').value;
+            if (validationRegex.test(textInput)) {
+                alert('Special characters found');
+                return false; 
+            } else {
+                alert('Text is valid');
+                return false;  
+            }
+        }
+
+        function addText() {
+            const heading = document.getElementById('page-heading');
+            heading.innerHTML += ' Add text';
+        }
+    </script>
+
+</body>
+</html>
